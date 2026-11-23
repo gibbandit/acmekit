@@ -1,0 +1,15 @@
+{
+  "ignore_dirs": [
+    "node_modules",
+    "web/dist",
+    "web/build",
+    "web/.tanstack",
+    "web/.output",
+    "bin",
+    "tmp",
+    "web/playwright-report",
+    "web/test-results",
+    "web/coverage",
+    "coverage"
+  ]
+}

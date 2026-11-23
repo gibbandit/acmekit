@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "web/src": "production"
+  },
+  "excludes": ["**/node_modules/**", "**/__generated__/**"],
+  "projects": {
+    "production": {
+      "schema": "schema.graphql",
+      "language": "typescript",
+      "output": "web/build/__generated__",
+      "eagerEsModules": true,
+      "persist": {
+        "file": "web/persisted-queries.json",
+        "algorithm": "SHA256"
+      }
+    }
+  }
+}

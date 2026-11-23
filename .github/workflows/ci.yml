@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: |
+          go mod download
+          npm ci
+
+      - name: Check formatting, lint, and React Doctor
+        run: |
+          npm run format:check
+          npm run lint
+          npm run doctor
+
+      - name: Build the embedded application
+        run: |
+          npm run build:web
+          CGO_ENABLED=0 go build -buildvcs=false -trimpath -o .build/acme ./cmd/acme
+
+      - name: Type-check and run unit and integration tests
+        run: |
+          npm run relay
+          npm run typecheck
+          npm run typecheck:production
+          npm test
+          go test -tags dev -race ./cmd/... ./internal/... ./routeadapter ./web
+          go test -race ./cmd/... ./internal/... ./routeadapter ./web
+
+      - name: Install Chromium
+        run: npm exec -- playwright install --with-deps chromium
+
+      - name: Run browser E2E tests
+        run: npm run test:e2e
+
+      - name: Save browser failure report
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report
+          path: web/playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7

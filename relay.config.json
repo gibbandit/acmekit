@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "web/src": "development"
+  },
+  "excludes": ["**/node_modules/**", "**/__generated__/**"],
+  "projects": {
+    "development": {
+      "schema": "schema.graphql",
+      "language": "typescript",
+      "output": "web/src/__generated__",
+      "eagerEsModules": true
+    }
+  }
+}

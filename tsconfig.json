@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./web/src/*"],
+      "@relay/*": ["./web/src/__generated__/*"]
+    }
+  },
+  "include": [
+    "web/src",
+    "web/tooling",
+    "*.config.ts",
+    "*.config.*.ts",
+    "packages/route-adapter/src"
+  ],
+  "exclude": ["node_modules", "web/dist", "web/build"]
+}

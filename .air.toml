@@ -1,0 +1,22 @@
+tmp_dir = ".build/dev"
+
+[build]
+cmd = "go build -tags dev -buildvcs=false -o ./.build/dev/acme ./cmd/acme"
+entrypoint = ["./.build/dev/acme", "--demo"]
+include_dir = ["cmd", "internal", "routeadapter", "web"]
+include_ext = ["go", "rego"]
+include_file = ["go.mod", "go.sum"]
+exclude_dir = ["web/src", "web/dist", "web/build"]
+exclude_regex = ["_test\\.go$"]
+exclude_unchanged = true
+delay = 300
+stop_on_error = true
+send_interrupt = true
+kill_delay = "6s"
+
+[build.windows]
+cmd = "go build -tags dev -buildvcs=false -o ./.build/dev/acme.exe ./cmd/acme"
+entrypoint = ["./.build/dev/acme.exe", "--demo"]
+
+[misc]
+clean_on_exit = true

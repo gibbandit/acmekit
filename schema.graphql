@@ -1,0 +1,110 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+interface Node {
+  id: ID!
+}
+
+enum ProjectStatus {
+  ACTIVE
+  PLANNED
+  ARCHIVED
+}
+enum Role {
+  MAINTAINER
+  MEMBER
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  role: Role!
+  avatarUrl: String
+  canManageProjects: Boolean!
+}
+
+type Project implements Node {
+  id: ID!
+  slug: String!
+  name: String!
+  description: String!
+  status: ProjectStatus!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type ProjectEdge {
+  cursor: String!
+  node: Project!
+}
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+type ProjectConnection {
+  edges: [ProjectEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type ProjectStats {
+  total: Int!
+  active: Int!
+  planned: Int!
+  archived: Int!
+}
+type ServerInfo {
+  name: String!
+  version: String!
+  demoEnabled: Boolean!
+  githubEnabled: Boolean!
+  storage: String!
+}
+type Query {
+  viewer: User
+  node(id: ID!): Node
+  project(id: ID!): Project
+  projectBySlug(slug: String!): Project
+  projects(
+    first: Int = 6
+    after: String
+    anchor: String
+    search: String
+    status: ProjectStatus
+  ): ProjectConnection!
+  projectStats: ProjectStats!
+  serverInfo: ServerInfo!
+}
+input CreateProjectInput {
+  name: String!
+  description: String!
+  status: ProjectStatus!
+  clientMutationId: String
+}
+input UpdateProjectInput {
+  id: ID!
+  name: String!
+  description: String!
+  status: ProjectStatus!
+  clientMutationId: String
+}
+input DeleteProjectInput {
+  id: ID!
+  clientMutationId: String
+}
+type ProjectPayload {
+  project: Project!
+  clientMutationId: String
+}
+type DeleteProjectPayload {
+  deletedProjectId: ID!
+  clientMutationId: String
+}
+type Mutation {
+  createProject(input: CreateProjectInput!): ProjectPayload!
+  updateProject(input: UpdateProjectInput!): ProjectPayload!
+  deleteProject(input: DeleteProjectInput!): DeleteProjectPayload!
+}

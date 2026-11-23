@@ -1,0 +1,19 @@
+{
+  "name": "@acmekit/route-adapter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./runtime": "./src/index.ts",
+    "./vite": "./src/vite.ts"
+  },
+  "dependencies": {
+    "@tanstack/router-generator": "1.167.46"
+  },
+  "peerDependencies": {
+    "@tanstack/react-router": "1.170.46",
+    "@tanstack/router-core": "1.171.39",
+    "relay-runtime": "21.0.1",
+    "vite": "8.3.6"
+  }
+}

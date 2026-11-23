@@ -1,0 +1,264 @@
+:root {
+  color-scheme: light;
+  --palette-blue: #416bab;
+  --palette-teal: #22776a;
+  --palette-amber: #8f6130;
+  --palette-rose: #b34753;
+  --palette-violet: #775f9f;
+  --palette-blue-solid: #416bab;
+  --palette-blue-hover: color-mix(
+    in srgb,
+    var(--palette-blue-solid) 94%,
+    black
+  );
+  --palette-teal-solid: #22776a;
+  --palette-teal-hover: color-mix(
+    in srgb,
+    var(--palette-teal-solid) 94%,
+    black
+  );
+  --palette-amber-solid: #8f6130;
+  --palette-amber-hover: color-mix(
+    in srgb,
+    var(--palette-amber-solid) 94%,
+    black
+  );
+  --palette-rose-solid: #b34753;
+  --palette-rose-hover: color-mix(
+    in srgb,
+    var(--palette-rose-solid) 94%,
+    black
+  );
+  --palette-violet-solid: #775f9f;
+  --palette-violet-hover: color-mix(
+    in srgb,
+    var(--palette-violet-solid) 94%,
+    black
+  );
+  --background: #f6f6f4;
+  --foreground: #292b2b;
+  --card: #ffffff;
+  --card-foreground: #292b2b;
+  --popover: #ffffff;
+  --popover-foreground: #292b2b;
+  --field: var(--muted);
+  --card-edge: color-mix(in srgb, var(--foreground) 16%, var(--card));
+  --glass-edge: rgb(255 255 255 / 75%);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 95%);
+  --primary: var(--palette-blue-solid);
+  --primary-hover: var(--palette-blue-hover);
+  --primary-foreground: #ffffff;
+  --control-edge: var(--border);
+  --control-light: linear-gradient(180deg, rgb(255 255 255 / 32%), transparent);
+  --control-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%), 0 1px 1px rgb(20 30 35 / 8%);
+  --menu-shadow:
+    0 1px 3px rgb(20 30 35 / 8%), 0 8px 24px rgb(20 30 35 / 12%),
+    0 24px 56px rgb(20 30 35 / 8%);
+  --dialog-shadow:
+    0 8px 24px rgb(20 30 35 / 8%), 0 32px 80px rgb(20 30 35 / 18%);
+  --secondary: #e2e7e2;
+  --secondary-foreground: #292b2b;
+  --muted: #eceeea;
+  --muted-foreground: #656a69;
+  --info: color-mix(in srgb, var(--palette-blue-solid) 10%, var(--card));
+  --info-foreground: var(--palette-blue);
+  --success: color-mix(in srgb, var(--palette-teal-solid) 10%, var(--card));
+  --success-foreground: var(--palette-teal);
+  --warning: color-mix(in srgb, var(--palette-amber-solid) 10%, var(--card));
+  --warning-foreground: var(--palette-amber);
+  --accent: color-mix(in srgb, var(--foreground) 6%, var(--card));
+  --accent-foreground: var(--foreground);
+  --pressed: color-mix(in srgb, var(--foreground) 10%, var(--card));
+  --selection: var(--card);
+  --destructive: var(--palette-rose);
+  --border: #dde1de;
+  --input: #c7cdca;
+  --ring: var(--palette-blue);
+  --motion-fast: 120ms;
+  --motion-standard: 180ms;
+  --motion-enter: 240ms;
+  --motion-exit: 160ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --radius: 0.625rem;
+  --chart-1: var(--primary);
+  --chart-2: var(--palette-teal);
+  --chart-3: var(--palette-amber);
+  --chart-4: var(--palette-rose);
+  --chart-5: var(--palette-violet);
+  --sidebar: rgb(236 238 234 / 92%);
+  --sidebar-foreground: #292b2b;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: #d6dcd7;
+  --sidebar-ring: var(--ring);
+}
+
+.dark {
+  color-scheme: dark;
+  --palette-blue: #8facd5;
+  --palette-teal: #36bea8;
+  --palette-amber: #cfa270;
+  --palette-rose: #d79aa1;
+  --palette-violet: #b2a4c8;
+  --background: #1c1e20;
+  --foreground: #eef0f1;
+  --card: #25282b;
+  --card-foreground: #eef0f1;
+  --popover: #25282b;
+  --popover-foreground: #eef0f1;
+  --glass-edge: rgb(255 255 255 / 18%);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 18%);
+  --control-edge: var(--border);
+  --control-light: linear-gradient(180deg, rgb(255 255 255 / 6%), transparent);
+  --control-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%), 0 1px 1px rgb(0 0 0 / 20%);
+  --menu-shadow: 0 3px 10px rgb(0 0 0 / 24%), 0 18px 48px rgb(0 0 0 / 32%);
+  --dialog-shadow: 0 8px 24px rgb(0 0 0 / 25%), 0 32px 80px rgb(0 0 0 / 45%);
+  --secondary: #373d40;
+  --secondary-foreground: #eef0f1;
+  --muted: #303438;
+  --muted-foreground: #b5bdc1;
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --sidebar: rgb(24 26 28 / 92%);
+  --sidebar-foreground: #eef0f1;
+  --sidebar-accent: var(--card);
+  --sidebar-border: oklch(1 0 0 / 10%);
+}
+
+@theme inline {
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-palette-blue: var(--palette-blue);
+  --color-palette-blue-solid: var(--palette-blue-solid);
+  --color-palette-blue-hover: var(--palette-blue-hover);
+  --color-palette-teal: var(--palette-teal);
+  --color-palette-teal-solid: var(--palette-teal-solid);
+  --color-palette-teal-hover: var(--palette-teal-hover);
+  --color-palette-amber: var(--palette-amber);
+  --color-palette-amber-solid: var(--palette-amber-solid);
+  --color-palette-amber-hover: var(--palette-amber-hover);
+  --color-palette-rose: var(--palette-rose);
+  --color-palette-rose-solid: var(--palette-rose-solid);
+  --color-palette-rose-hover: var(--palette-rose-hover);
+  --color-palette-violet: var(--palette-violet);
+  --color-palette-violet-solid: var(--palette-violet-solid);
+  --color-palette-violet-hover: var(--palette-violet-hover);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-field: var(--field);
+  --color-card-edge: var(--card-edge);
+  --color-glass-edge: var(--glass-edge);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-control-edge: var(--control-edge);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-pressed: var(--pressed);
+  --color-selection: var(--selection);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --shadow-control: var(--control-shadow);
+  --inset-shadow-glass: var(--glass-highlight);
+  --shadow-menu: var(--menu-shadow);
+  --shadow-dialog: var(--dialog-shadow);
+  --font-sans:
+    'Instrument Sans Variable', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans--font-feature-settings: 'ss01', 'ss05';
+  --font-heading: 'Archivo', var(--font-sans);
+  --text-page: 2.75rem;
+  --text-page--line-height: 3.25rem;
+  --text-page--font-weight: 500;
+  --text-page--letter-spacing: -0.02em;
+  --text-record: 2rem;
+  --text-record--line-height: 2.5rem;
+  --text-record--font-weight: 500;
+  --text-record--letter-spacing: -0.02em;
+  --text-dialog: 1.5rem;
+  --text-dialog--line-height: 2rem;
+  --text-dialog--font-weight: 500;
+  --text-dialog--letter-spacing: -0.02em;
+  --text-title: 1.25rem;
+  --text-title--line-height: 1.75rem;
+  --text-title--font-weight: 500;
+  --text-title--letter-spacing: -0.02em;
+  --text-section: 1rem;
+  --text-section--line-height: 1.5rem;
+  --text-section--font-weight: 500;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.25rem;
+  --text-label--font-weight: 500;
+  --text-metadata: 0.75rem;
+  --text-metadata--line-height: 1rem;
+  --text-metric: 3rem;
+  --text-metric--line-height: 1;
+  --text-metric--font-weight: 500;
+  --text-metric--letter-spacing: -0.04em;
+  --text-metric-compact: 2.5rem;
+  --text-metric-compact--line-height: 1;
+  --text-metric-compact--font-weight: 500;
+  --text-metric-compact--letter-spacing: -0.04em;
+}
+
+@utility motion-control {
+  transition-duration: var(--motion-fast);
+  transition-timing-function: var(--motion-ease);
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0ms;
+  }
+}
+
+@utility control-surface {
+  @apply shadow-control;
+  background-image: var(--control-light);
+}
+
+@utility glass-surface {
+  @apply inset-shadow-glass;
+  --glass-background: var(--popover);
+  background-color: var(--glass-background);
+  background-image: none;
+  @media (forced-colors: active) {
+    --glass-background: Canvas;
+    outline: 1px solid CanvasText;
+  }
+}
